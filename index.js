@@ -42,3 +42,13 @@ user2
 .catch((err) => {
     console.error('Error saving user:', err);
 }); 
+
+User.insertMany([
+    { name: "Alice Johnson", email: "alice@gmail.com", age: 28 },
+    { name: "Bob Brown", email: "bob@gmail.com", age: 35 },
+    { name: "Charlie Davis", email: "charlie@gmail.com", age: 40 }
+]).then(() => {
+    console.log('Users inserted successfully');
+}).catch((err) => {
+    console.error('Error inserting users:', err);
+});
