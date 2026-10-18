@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
+User.updateOne({name: "John Doe"}, {$set: {age: 31}})
+.then((res) => {
+    console.log('User updated successfully:', res);
+})
+.catch((err) => {
+    console.error('Error updating user:', err);
+});
+
 // const user1 = new User({
 //     name: "John Doe",
 //     email: "john@gmail.com",
@@ -53,18 +61,18 @@ const User = mongoose.model("User", userSchema);
 //     console.error('Error inserting users:', err);
 // });
 
-User.find({age : {$lt:30}})
-.then((res) =>{
-    console.log(res)
-})
-.catch((err) => {
-    console.error('Error finding users:', err);
-});
+// User.find({age : {$lt:30}})
+// .then((res) =>{
+//     console.log(res)
+// })
+// .catch((err) => {
+//     console.error('Error finding users:', err);
+// });
 
-User.findById('6ad44e349c1187ca65adc7c4')
-.then((res) => {
-    console.log(res)
-})
-.catch((err) => {
-    console.error('Error finding user by ID:', err);
-});
+// User.findById('6ad44e349c1187ca65adc7c4')
+// .then((res) => {
+//     console.log(res)
+// })
+// .catch((err) => {
+//     console.error('Error finding user by ID:', err);
+// });
