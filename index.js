@@ -19,3 +19,26 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model("User", userSchema);
+
+const user1 = new User({
+    name: "John Doe",
+    email: "john@gmail.com",
+    age: 30
+})
+
+user1.save();
+
+const user2 = new User({
+    name: "Jane Smith",
+    email: "jane@gmail.com",
+    age: 25
+})
+
+user2
+.save()
+.then(() => {
+    console.log('User saved successfully');
+})
+.catch((err) => {
+    console.error('Error saving user:', err);
+}); 
