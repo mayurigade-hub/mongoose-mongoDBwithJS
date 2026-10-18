@@ -20,35 +20,51 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-const user1 = new User({
-    name: "John Doe",
-    email: "john@gmail.com",
-    age: 30
-})
+// const user1 = new User({
+//     name: "John Doe",
+//     email: "john@gmail.com",
+//     age: 30
+// })
 
-user1.save();
+// user1.save();
 
-const user2 = new User({
-    name: "Jane Smith",
-    email: "jane@gmail.com",
-    age: 25
-})
+// const user2 = new User({
+//     name: "Jane Smith",
+//     email: "jane@gmail.com",
+//     age: 25
+// })
 
-user2
-.save()
-.then(() => {
-    console.log('User saved successfully');
+// user2
+// .save()
+// .then(() => {
+//     console.log('User saved successfully');
+// })
+// .catch((err) => {
+//     console.error('Error saving user:', err);
+// }); 
+
+// User.insertMany([
+//     { name: "Alice Johnson", email: "alice@gmail.com", age: 28 },
+//     { name: "Bob Brown", email: "bob@gmail.com", age: 35 },
+//     { name: "Charlie Davis", email: "charlie@gmail.com", age: 40 }
+// ]).then(() => {
+//     console.log('Users inserted successfully');
+// }).catch((err) => {
+//     console.error('Error inserting users:', err);
+// });
+
+User.find({age : {$lt:30}})
+.then((res) =>{
+    console.log(res)
 })
 .catch((err) => {
-    console.error('Error saving user:', err);
-}); 
+    console.error('Error finding users:', err);
+});
 
-User.insertMany([
-    { name: "Alice Johnson", email: "alice@gmail.com", age: 28 },
-    { name: "Bob Brown", email: "bob@gmail.com", age: 35 },
-    { name: "Charlie Davis", email: "charlie@gmail.com", age: 40 }
-]).then(() => {
-    console.log('Users inserted successfully');
-}).catch((err) => {
-    console.error('Error inserting users:', err);
+User.findById('6ad44e349c1187ca65adc7c4')
+.then((res) => {
+    console.log(res)
+})
+.catch((err) => {
+    console.error('Error finding user by ID:', err);
 });
