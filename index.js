@@ -28,6 +28,33 @@ User.updateOne({name: "John Doe"}, {$set: {age: 31}})
     console.error('Error updating user:', err);
 });
 
+User.updateMany({age: {$gt: 30}}, {age: 30})  
+.then((res) => {
+    console.log('Users updated successfully:', res);
+})
+.catch((err) => {
+    console.error('Error updating users:', err);
+});
+
+
+//This prints your updated result in console window
+User.findOneAndUpdate({name: "Jane Smith"}, {age: 26}, {new: true})
+.then((res) => {
+    console.log('User updated successfully:', res);
+})
+.catch((err) => {
+    console.error('Error updating user:', err);
+});
+
+//by Id
+User.findByIdAndUpdate('6ad44e349c1187ca65adc7c4', {age: 32}, {new: true})
+.then((res) => {
+    console.log('User updated successfully:', res);
+})
+.catch((err) => {
+    console.error('Error updating user:', err);
+});
+
 // const user1 = new User({
 //     name: "John Doe",
 //     email: "john@gmail.com",
